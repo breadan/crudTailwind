@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tailwind</title>
+    <link rel="stylesheet" href="dist/main.css">
+</head>
+<style>
+    input:focus {
+        background-color: #c8c1c2;
+        color: #0d0707;
+        outline:none;
+        border-radius: 5px;
+    }
+
+    input:hover {
+        background-color: #c8c1c2;
+        border-radius: 5px;
+    }
+    table {
+        text-align: center;
+        margin: 10px 0;
+    }
+</style>
+
+<body style="margin: 15px;">
+
+
+    <div class="container  mx-auto w-1/5 items-center mt-10">
+        <h1 class="text-center font-bold text-2xl text-slate-500">CRUDS</h1>
+        <h4 class="text-center text-2xl text-slate-500">PRODUCT MANAGEMENT SYSTEM</h4>
+    </div>
+
+    <div class="container mx-auto w-4/5 items-center mt-10">
+        <div class=" mx-auto items-center">
+            <div class="mt-2  ">
+                <div class=" mx-auto items-center flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300  ">
+                    <input type="text" name="title" id="title" autocomplete="username"
+                        class=" pl-2  grow h-14 block flex-1 border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6  "
+                        placeholder="Title">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-12 mt-10">
+            <div class="sm:col-span-3">
+                <div class="mt-2">
+                    <input onkeyup="getTotal()" type="number" name="price" id="price" autocomplete="given-name" placeholder="Price"
+                        class="pl-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset ">
+                </div>
+            </div>
+
+            <div class="sm:col-span-3">
+                <div class="mt-2">
+                    <input onkeyup="getTotal()" type="number" name="taxes" id="taxes" autocomplete="family-name " placeholder="taxes"
+                        class="pl-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset ">
+                </div>
+
+            </div>
+            <div class="sm:col-span-3">
+                <div class="mt-2">
+                    <input onkeyup="getTotal()" placeholder="ads" type="number" name="ads" id="ads" autocomplete="given-name"
+                        class="pl-2  block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset ">
+                </div>
+            </div>
+
+            <div class="sm:col-span-3 flex">
+                <div class="mt-2">
+                    <input onkeyup="getTotal()" placeholder="discount" type="number" name="discount" id="discount" autocomplete="family-name"
+                        class="pl-2  placeholder-shown:border-gray-500 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset ">
+                </div>
+                <button type="button" id="total"
+                    class=" h-1 bg-gradient-to-r from-slate-500 to-slate-800 ml-2 inline-block rounded px-4 pb-[5px] pt-[6px] text-xs font-medium text-black shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600">
+                    Total
+                </button>
+            </div>
+        </div>
+        <div class=" mx-auto items-center">
+            <div class="mt-2  ">
+                <div
+                    class=" mx-auto items-center flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300  focus:outline-none focus:ring focus:ring-violet-300">
+                    <input type="number" name="count" id="count" autocomplete="username"
+                        class="pl-2  grow h-14 block flex-1 border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                        placeholder="count">
+                </div>
+            </div>
+
+        </div>
+        <div class=" mx-auto items-center">
+            <div class="mt-2  ">
+                <div
+                    class=" mx-auto items-center flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300 ">
+                    <input type="text" name="category" id="category" autocomplete="username"
+                        class="pl-2  grow h-14 block flex-1 border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                        placeholder="Category">
+                </div>
+            </div>
+        </div>
+        <button type="button" id="submit" onclick="create()"
+            style="background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;"
+            class=" h-12 mt-6 w-full  ml-2 rounded  px-4 pb-[5px] pt-[6px] text-xs font-medium uppercase leading-normal text-black shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]  ">
+            Create
+        </button>
+        <div class=" mx-auto items-center">
+            <div class="mt-2  ">
+                <div
+                    class=" mx-auto items-center flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring focus:ring-violet-300">
+                    <input onkeyup="searchProduct(this.value)" type="text" name="Search" id="Search" autocomplete="username"
+                        class="pl-2  grow h-14 block flex-1 border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                        placeholder="Search">
+                </div>
+            </div>
+        </div>
+        <div class="mt-6 flex justify-around ">
+            <button onclick="getSearchMode(this.id)" type="button" id="searchTitle"
+                style="background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;"
+                class=" w-80 h-12 bg-gradient-to-r from-slate-500 to-slate-500 ml-2 rounded px-4 pb-[5px] pt-[6px] text-xs font-medium uppercase shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out  hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]">
+                Search By Title
+            </button>
+            <button onclick="getSearchMode(this.id)" type="button" id="searchCategory"
+                style="background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;"
+                class=" w-80 h-12 bg-gradient-to-r from-gray-600 to-gray-400 ml-2 rounded px-4 pb-[5px] pt-[6px] text-xs font-medium uppercase  shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]  ">
+                Search By Category
+            </button>
+        </div>
+        <div id="deleteAll">
+
+        </div>
+       
+        <!-- //=========================================== -->
+        <table class="table-fixed w-full mt-10">
+            <thead>
+                <tr class="uppercase p-5">
+                    <th>id</th>
+                    <th>title</th>
+                    <th>price</th>
+                    <th>taxes</th>
+                    <th>ads</th>
+                    <th>discount</th>
+                    <th>total</th>
+                    <th>category</th>
+                    <th>update</th>
+                    <th>delete</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                
+
+            </tbody>
+        </table>
+    </div>
+<script src="/index.js"></script>
+
+
+</body>
+
+</html>
